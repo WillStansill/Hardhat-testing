@@ -1,5 +1,7 @@
 const { loadFixture } = require('@nomicfoundation/hardhat-network-helpers');
 const { assert } = require('chai');
+const { expect } = require('chai');
+
 
 describe('Game1', function () {
   async function deployContractAndSetVariables() {
@@ -13,9 +15,32 @@ describe('Game1', function () {
     // leave this as-is
     const { game } = await loadFixture(deployContractAndSetVariables);
 
+
+      expect(await game.unlocked()).to.equal(false);
+
+      await game.unlock();
+
+      expect(await game.isWon()).to.equal(false);
+
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    //expect(game.unlocked).to.equal(true);
+
+    //await game.unlock
+    //await require(game.isWon == true)
+      
+
+
+  
     // you must call unlock before you can win
 
-    // leave this call to game.win() as-is
     await game.win();
 
     // leave this testing assertion as-is
